@@ -1,0 +1,10 @@
+<div class="jumbotron">
+  <h2>Alex Kovshovik</h2>
+  <p class="lead">A productive web professional that<br />does not compromise speed and maintainability.</p>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 text-center text-uppercase">
+    <a href="/blog">Blog</a>
+  </div>
+</div>
