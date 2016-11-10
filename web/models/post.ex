@@ -1,6 +1,8 @@
 defmodule ShovikCom.Post do
   use ShovikCom.Web, :model
 
+  import Ecto.Changeset
+
   schema "posts" do
     belongs_to :author, ShovikCom.User
 
@@ -15,9 +17,9 @@ defmodule ShovikCom.Post do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:title, :url, :body, :author_id, :publish_at])
+  def changeset(post, params \\ %{}) do
+    post
+    |> cast(params, [:title, :url, :body, :publish_at, :author_id])
     |> validate_required([:title, :body])
   end
 end

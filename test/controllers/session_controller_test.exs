@@ -27,14 +27,14 @@ defmodule ShovikCom.SessionControllerTest do
 
     refute get_session(conn, :current_user)
     assert get_flash(conn, :error) == "Invalid email/password combination!"
-    assert redirected_to(conn) == page_path(conn, :index)
+    assert redirected_to(conn) == session_path(conn, :new)
   end
 
   test "does not create a session if user does not exist", %{conn: conn} do
     conn = post conn, session_path(conn, :create), user: %{email: "wrong@test.com", password: "test"}
 
     assert get_flash(conn, :error) == "Invalid email/password combination!"
-    assert redirected_to(conn) == page_path(conn, :index)
+    assert redirected_to(conn) == session_path(conn, :new)
   end
 
   test "deletes the user session", %{conn: conn} do

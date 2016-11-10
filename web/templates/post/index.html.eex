@@ -5,7 +5,8 @@
     <tr>
       <th>Title</th>
       <th>Url</th>
-      <th>Body</th>
+      <th>Author</th>
+      <th>Published At</th>
 
       <th></th>
     </tr>
@@ -15,7 +16,8 @@
     <tr>
       <td><%= post.title %></td>
       <td><%= post.url %></td>
-      <td><%= post.body %></td>
+      <td><%= post.author.first_name %></td>
+      <td><%= post.publish_at %></td>
 
       <td class="text-right">
         <%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %>

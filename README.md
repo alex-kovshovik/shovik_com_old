@@ -9,9 +9,10 @@ To start your Phoenix app:
 
 # Cheat sheet
 
-  * alias `ShovikCom.Anything` would let you use `Anything` unqualified.
+  * `alias ShovikCom.Anything` would let you use `Anything` unqualified.
   * run `iex -s mix` to run interactive console in context of the app.
-  
+  * run `mix ecto.gen.migration migration_file_name` to create new migration.
+
 
 Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 

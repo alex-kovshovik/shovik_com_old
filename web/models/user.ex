@@ -3,7 +3,7 @@ defmodule ShovikCom.User do
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
   schema "users" do
-    has_many :posts, ShovikCom.Post
+    has_many :posts, ShovikCom.Post, foreign_key: :author_id
 
     field :email, :string
     field :first_name, :string
@@ -20,8 +20,8 @@ defmodule ShovikCom.User do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(struct, params \\ %{}) do
-    struct
+  def changeset(user, params \\ %{}) do
+    user
     |> cast(params, [:email, :first_name, :last_name, :password, :password_confirmation])
     |> validate_required([:email, :first_name, :last_name, :password, :password_confirmation])
     |> hash_password

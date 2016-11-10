@@ -8,7 +8,12 @@
   </li>
 
   <li>
-    <strong>Url:</strong>
+    <strong>URL:</strong>
+    <%= @post.url %>
+  </li>
+
+  <li>
+    <strong>Publish At:</strong>
     <%= @post.url %>
   </li>
 
@@ -19,5 +24,5 @@
 
 </ul>
 
-<%= link "Edit", to: post_path(@conn, :edit, @post) %>
+<%= link "Edit", to: post_path(@conn, :edit, @post) %>&nbsp;|&nbsp;
 <%= link "Back", to: post_path(@conn, :index) %>

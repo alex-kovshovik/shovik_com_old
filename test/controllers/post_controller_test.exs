@@ -8,20 +8,44 @@ defmodule ShovikCom.PostControllerTest do
   @invalid_attrs %{}
 
   setup do
-    User.changeset(%User{}, %{email: "test@test.com",
-                              password: "test",
-                              password_confirmation: "test",
-                              first_name: "test",
-                              last_name: "test"})
-    |> Repo.insert!
+    {:ok, user} = create_user
 
-    {:ok, conn: build_conn()}
+    conn =
+      build_conn()
+      |> login_user(user)
+
+    {:ok, conn: conn, user: user}
+  end
+
+  defp create_user do
+    user_data = %{email: "test@test.com",
+                  password: "test",
+                  password_confirmation: "test",
+                  first_name: "test",
+                  last_name: "test"}
+
+    User.changeset(%User{}, user_data) |> Repo.insert
+  end
+
+  defp login_user(conn, user) do
+    post conn, session_path(conn, :create), user: %{email: user.email, password: user.password}
   end
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, post_path(conn, :index)
     assert html_response(conn, 200) =~ "Listing posts"
   end
+
+  # TODO: to figure out later: how to disable authenticated users for certain tests.
+  # test "redirects to home page when unauthenticated", %{conn: conn, user: user} do
+  #   conn =
+  #     delete(conn, session_path(conn, :delete, user))
+  #     |> get(conn, post_path(conn, :index))
+  #
+  #   assert get_flash(conn, :error) == "You are not authorized, kindly navigate away."
+  #   assert redirected_to(conn) == "/"
+  #   assert conn.halted
+  # end
 
   test "renders form for new resources", %{conn: conn} do
     conn = get conn, post_path(conn, :new)
@@ -58,9 +82,9 @@ defmodule ShovikCom.PostControllerTest do
   end
 
   test "updates chosen resource and redirects when data is valid", %{conn: conn} do
-    author = Repo.get_by(User, %{email: "test@test.com"})
+    user = Repo.get_by(User, %{email: "test@test.com"})
     post = Repo.insert! %Post{}
-    conn = put conn, post_path(conn, :update, post), post: Map.merge(@valid_attrs, %{"author_id" => author.id})
+    conn = put conn, post_path(conn, :update, post), post: Map.merge(@valid_attrs, %{"author_id" => user.id})
     assert redirected_to(conn) == post_path(conn, :show, post)
     assert Repo.get_by(Post, @valid_attrs)
   end

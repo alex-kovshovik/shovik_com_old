@@ -10,7 +10,8 @@ defmodule ShovikCom.SessionController do
     render conn, "new.html", changeset: User.changeset(%User{})
   end
 
-  def create(conn, %{"user" => %{"email" => email, "password" => password}}) when not is_nil(email) and not is_nil(password) do
+  def create(conn, %{"user" => %{"email" => email, "password" => password}})
+  when not is_nil(email) and not is_nil(password) do
     Repo.get_by(User, email: email)
     |> sign_in(password, conn)
   end
@@ -26,14 +27,15 @@ defmodule ShovikCom.SessionController do
     |> redirect(to: page_path(conn, :index))
   end
 
-  defp sign_in(user, _password, conn) when is_nil(user) do
+  defp sign_in(user, _password, conn)
+  when is_nil(user) do
     failed_login(conn)
   end
 
   defp sign_in(user, password, conn) do
     if checkpw(password, user.password_digest) do
       conn
-      |> put_session(:current_user, %{id: user.id, email: user.email})
+      |> put_session(:current_user, %User{id: user.id})
       |> put_flash(:info, "Sign in successful!")
       |> redirect(to: page_path(conn, :index))
     else
@@ -47,7 +49,7 @@ defmodule ShovikCom.SessionController do
     conn
     |> put_session(:current_user, nil)
     |> put_flash(:error, "Invalid email/password combination!")
-    |> redirect(to: page_path(conn, :index))
+    |> redirect(to: session_path(conn, :new))
     |> halt()
   end
 end

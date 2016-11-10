@@ -2,21 +2,31 @@ defmodule ShovikCom.PostController do
   use ShovikCom.Web, :controller
 
   alias ShovikCom.Post
+  alias ShovikCom.LayoutView
+
+  plug :authorize_user
 
   def index(conn, _params) do
-    posts = Repo.all(Post)
+    posts = Repo.all(from p in Post, preload: [:author])
     render(conn, "index.html", posts: posts)
   end
 
   def new(conn, _params) do
-    changeset = Post.changeset(%Post{})
+    changeset =
+      LayoutView.current_user(conn)
+      |> build_assoc(:posts)
+      |> Post.changeset
+
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"post" => post_params}) do
-    changeset = Post.changeset(%Post{}, post_params)
+    post =
+      LayoutView.current_user(conn)
+      |> build_assoc(:posts)
+      |> Post.changeset(post_params)
 
-    case Repo.insert(changeset) do
+    case Repo.insert(post) do
       {:ok, _post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
@@ -61,5 +71,18 @@ defmodule ShovikCom.PostController do
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: post_path(conn, :index))
+  end
+
+  defp authorize_user(conn, _opts) do
+    user = LayoutView.current_user(conn)
+
+    if user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You are not authorized, kindly navigate away.")
+      |> redirect(to: "/")
+      |> halt()
+    end
   end
 end
