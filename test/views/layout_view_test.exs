@@ -4,11 +4,16 @@ defmodule ShovikCom.LayoutViewTest do
   alias ShovikCom.LayoutView
   alias ShovikCom.User
 
-  setup do
-    User.changeset(%User{}, %{email: "test", password: "test", password_confirmation: "test", first_name: "test", last_name: "test"})
-    |> Repo.insert!
+  alias ShovikCom.TestHelper
 
-    {:ok, conn: build_conn()}
+  setup do
+    {:ok, user} = TestHelper.create_user(%{email: "test",
+                                           password: "test",
+                                           password_confirmation: "test",
+                                           first_name: "test",
+                                           last_name: "test"})
+
+    {:ok, conn: build_conn(), user: user}
   end
 
   test "current user returns the user in the session", %{conn: conn} do

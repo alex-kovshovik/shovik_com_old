@@ -9,3 +9,15 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+
+alias ShovikCom.Repo
+alias ShovikCom.User
+
+%User{}
+|> User.changeset(%{email: "alex@shovik.com",
+                    first_name: "Alex",
+                    last_name: "Kovshovik",
+                    password: "12341234",
+                    password_confirmation: "12341234"})
+|> Repo.insert!
