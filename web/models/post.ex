@@ -20,6 +20,6 @@ defmodule ShovikCom.Post do
   def changeset(post, params \\ %{}) do
     post
     |> cast(params, [:title, :url, :body, :publish_at, :author_id])
-    |> validate_required([:title, :body])
+    |> validate_required([:title, :body, :author_id])
   end
 end
