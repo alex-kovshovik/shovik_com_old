@@ -2,9 +2,14 @@ defmodule ShovikCom.SessionControllerTest do
   use ShovikCom.ConnCase
   alias ShovikCom.User
 
+  alias ShovikCom.TestHelper
+
   setup do
-    User.changeset(%User{}, %{email: "test@test.com", password: "test", password_confirmation: "test", first_name: "test", last_name: "test"})
-    |> Repo.insert!
+    TestHelper.create_user(%{email: "test@test.com",
+                             password: "test",
+                             password_confirmation: "test",
+                             first_name: "test",
+                             last_name: "test"})
 
     {:ok, conn: build_conn()}
   end

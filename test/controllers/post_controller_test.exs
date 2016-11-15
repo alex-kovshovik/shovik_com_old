@@ -4,27 +4,20 @@ defmodule ShovikCom.PostControllerTest do
   alias ShovikCom.Post
   alias ShovikCom.User
 
+  alias ShovikCom.TestHelper
+
   @valid_attrs %{body: "some content", title: "some content", url: "some content"}
   @invalid_attrs %{}
 
   setup do
-    {:ok, user} = create_user
+    {:ok, user} = TestHelper.create_user(%{email: "test@test.com",
+                                           password: "test",
+                                           password_confirmation: "test",
+                                           first_name: "test",
+                                           last_name: "test"})
 
-    conn =
-      build_conn()
-      |> login_user(user)
-
+    conn = build_conn() |> login_user(user)
     {:ok, conn: conn, user: user}
-  end
-
-  defp create_user do
-    user_data = %{email: "test@test.com",
-                  password: "test",
-                  password_confirmation: "test",
-                  first_name: "test",
-                  last_name: "test"}
-
-    User.changeset(%User{}, user_data) |> Repo.insert
   end
 
   defp login_user(conn, user) do
