@@ -16,9 +16,7 @@ defmodule ShovikCom.SessionController do
     |> sign_in(password, conn)
   end
 
-  def create(conn, _) do
-    failed_login(conn)
-  end
+  def create(conn, _), do: failed_login(conn)
 
   def delete(conn, _params) do
     conn
@@ -27,10 +25,7 @@ defmodule ShovikCom.SessionController do
     |> redirect(to: page_path(conn, :index))
   end
 
-  defp sign_in(user, _password, conn)
-  when is_nil(user) do
-    failed_login(conn)
-  end
+  defp sign_in(user, _password, conn) when is_nil(user), do: failed_login(conn)
 
   defp sign_in(user, password, conn) do
     if checkpw(password, user.password_digest) do
