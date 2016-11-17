@@ -13,7 +13,8 @@ defmodule ShovikCom.PostController do
 
   def new(conn, _params) do
     changeset =
-      LayoutView.current_user(conn)
+      conn
+      |> LayoutView.current_user
       |> build_assoc(:posts)
       |> Post.changeset
 
@@ -22,7 +23,8 @@ defmodule ShovikCom.PostController do
 
   def create(conn, %{"post" => post_params}) do
     post =
-      LayoutView.current_user(conn)
+      conn
+      |> LayoutView.current_user
       |> build_assoc(:posts)
       |> Post.changeset(post_params)
 

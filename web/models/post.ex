@@ -1,4 +1,8 @@
 defmodule ShovikCom.Post do
+  @moduledoc """
+  Post module
+  """
+
   use ShovikCom.Web, :model
 
   import Ecto.Changeset

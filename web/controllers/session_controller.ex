@@ -12,7 +12,8 @@ defmodule ShovikCom.SessionController do
 
   def create(conn, %{"user" => %{"email" => email, "password" => password}})
   when not is_nil(email) and not is_nil(password) do
-    Repo.get_by(User, email: email)
+    User
+    |> Repo.get_by(email: email)
     |> sign_in(password, conn)
   end
 
