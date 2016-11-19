@@ -56,15 +56,9 @@ defmodule ShovikCom.PostControllerTest do
     assert html_response(conn, 200) =~ "New post"
   end
 
-  test "shows chosen resource", %{conn: conn} do
-    post = Repo.insert! %Post{}
-    conn = get conn, post_path(conn, :show, post)
-    assert html_response(conn, 200) =~ "Show post"
-  end
-
   test "renders page not found when id is nonexistent", %{conn: conn} do
     assert_error_sent 404, fn ->
-      get conn, post_path(conn, :show, -1)
+      get conn, post_path(conn, :edit, -1)
     end
   end
 
@@ -78,7 +72,7 @@ defmodule ShovikCom.PostControllerTest do
     user = Repo.get_by(User, %{email: "test@test.com"})
     post = Repo.insert! %Post{}
     conn = put conn, post_path(conn, :update, post), post: Map.merge(@valid_attrs, %{"author_id" => user.id})
-    assert redirected_to(conn) == post_path(conn, :show, post)
+    assert redirected_to(conn) == post_path(conn, :edit, post)
     assert Repo.get_by(Post, @valid_attrs)
   end
 

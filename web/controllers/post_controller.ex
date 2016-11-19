@@ -38,11 +38,6 @@ defmodule ShovikCom.PostController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id)
-    render(conn, "show.html", post: post)
-  end
-
   def edit(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
     changeset = Post.changeset(post)
@@ -57,7 +52,7 @@ defmodule ShovikCom.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: post_path(conn, :show, post))
+        |> redirect(to: post_path(conn, :edit, post))
       {:error, changeset} ->
         render(conn, "edit.html", post: post, changeset: changeset)
     end

@@ -18,7 +18,8 @@ defmodule ShovikCom.Router do
 
     get "/", PageController, :index
 
-    resources "/blog", PostController
+    resources "/blog", BlogController, only: [:index, :show]
+    resources "/posts", PostController, except: [:show]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 end
