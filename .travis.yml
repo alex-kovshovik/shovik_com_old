@@ -10,5 +10,6 @@ addons:
   postgresql: "9.4"
 
 env:
-  - PSQL_USER=postgres
-  - PSQL_DB=travis
+  global:
+    - PSQL_USER=postgres
+    - PSQL_DB=travis
