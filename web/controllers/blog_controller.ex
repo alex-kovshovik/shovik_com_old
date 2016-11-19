@@ -2,7 +2,6 @@ defmodule ShovikCom.BlogController do
   use ShovikCom.Web, :controller
 
   alias ShovikCom.Post
-  alias ShovikCom.LayoutView
 
   def index(conn, _params) do
     posts = Repo.all(from p in Post, preload: [:author])
