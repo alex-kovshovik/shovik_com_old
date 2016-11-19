@@ -12,9 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :shovik_com, ShovikCom.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "alexk",
-  password: "",
-  database: "shovik_blog_test",
+  username: System.get_env("PSQL_USER") || "alexk",
+  database: System.get_env("PSQL_DB") || "shovik_com_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 

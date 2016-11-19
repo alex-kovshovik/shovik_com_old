@@ -8,3 +8,7 @@ services:
 
 addons:
   postgresql: "9.4"
+
+env:
+  - PSQL_USER=postgres
+  - PSQL_DB=travis
