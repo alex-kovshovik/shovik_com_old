@@ -1,5 +1,7 @@
 # Shovik Blog
 
+[![Build Status](https://travis-ci.org/alex-kovshovik/shovik_com.svg?branch=master)](https://travis-ci.org/alex-kovshovik/shovik_com)
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
