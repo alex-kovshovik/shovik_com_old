@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :shovik_com, ShovikCom.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  database: "shovik_com_test",
+  database: "travis",
   pool: Ecto.Adapters.SQL.Sandbox
 
 config :comeonin, bcrypt_log_rounds: 4
