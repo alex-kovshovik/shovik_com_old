@@ -21,7 +21,7 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <p>
-        Current user: <%= current_user_name(@conn) %>
+        <%= render "auth.html", conn: @conn %>
       </p>
 
       <main role="main">

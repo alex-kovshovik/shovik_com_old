@@ -39,7 +39,8 @@ defmodule ShovikCom.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 2.3"},
-     {:credo, "~> 0.5.2"}]
+     {:credo, "~> 0.5.2"},
+     {:mix_test_watch, "~> 0.2.6"}]
 
   end
 
