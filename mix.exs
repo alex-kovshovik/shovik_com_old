@@ -41,7 +41,8 @@ defmodule ShovikCom.Mixfile do
      {:comeonin, "~> 2.3"},
      {:credo, "~> 0.5.2"},
      {:mix_test_watch, "~> 0.2.6"},
-     {:ex_machina, "~> 1.0"}]
+     {:ex_machina, "~> 1.0"},
+     {:earmark, "~> 1.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

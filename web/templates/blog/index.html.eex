@@ -1,1 +1,5 @@
-Post previews here
+<h1>Blog</h1>
+
+<%= for post <- @posts do %>
+  <%= link post.title, to: blog_path(@conn, :show, post) %>
+<% end %>

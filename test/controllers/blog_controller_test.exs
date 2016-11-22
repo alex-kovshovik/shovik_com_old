@@ -18,12 +18,12 @@ defmodule ShovikCom.BlogControllerTest do
   @tag watching: true
   test "lists last 5 posts on index", %{conn: conn} do
     conn = get conn, blog_path(conn, :index)
-    assert html_response(conn, 200) =~ "Post previews here"
+    assert html_response(conn, 200) =~ "Blog"
   end
 
   @tag watching: true
   test "displays one post", %{conn: conn, post: post} do
     conn = get conn, blog_path(conn, :show, post)
-    assert html_response(conn, 200) =~ "Post details here"
+    assert html_response(conn, 200) =~ "Awesome blog about your mom"
   end
 end

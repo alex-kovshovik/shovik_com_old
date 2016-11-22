@@ -66,7 +66,7 @@ exports.config = {
   npm: {
     enabled: true,
     styles: {
-      simplemde: ['dist/simplemde.min.css']
+      // simplemde: ['dist/simplemde.min.css']
     }
   }
 };

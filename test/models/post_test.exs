@@ -15,4 +15,14 @@ defmodule ShovikCom.PostTest do
     changeset = Post.changeset(%Post{}, @invalid_attrs)
     refute changeset.valid?
   end
+
+  test "when the body includes script tag" do
+    changeset = Post.changeset(%Post{}, %{@valid_attrs | body: "Hello <script type=''"})
+    refute String.match? get_change(changeset, :body), ~r{<script>}
+  end
+
+  test "when the body includes no scary tags" do
+    changeset = Post.changeset(%Post{}, @valid_attrs)
+    assert get_change(changeset, :body) == @valid_attrs[:body]
+  end
 end

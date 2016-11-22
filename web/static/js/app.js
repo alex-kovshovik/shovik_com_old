@@ -12,7 +12,6 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
-import SimpleMDE from "simplemde"
 
 // Import local files
 //
@@ -20,5 +19,3 @@ import SimpleMDE from "simplemde"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
-
-const simplemde = new SimpleMDE();
