@@ -1,20 +1,15 @@
 defmodule ShovikCom.PostControllerTest do
   use ShovikCom.ConnCase
 
-  alias ShovikCom.Post
-  alias ShovikCom.User
+  import ShovikCom.Factory
 
-  alias ShovikCom.TestHelper
+  alias ShovikCom.Post
 
   @valid_attrs %{body: "some content", title: "some content", url: "some content"}
   @invalid_attrs %{}
 
   setup do
-    {:ok, user} = TestHelper.create_user(%{email: "test@test.com",
-                                           password: "test",
-                                           password_confirmation: "test",
-                                           first_name: "test",
-                                           last_name: "test"})
+    user = insert(:user)
 
     conn = build_conn() |> login_user(user)
     {:ok, conn: conn, user: user}
@@ -68,8 +63,7 @@ defmodule ShovikCom.PostControllerTest do
     assert html_response(conn, 200) =~ "Edit post"
   end
 
-  test "updates chosen resource and redirects when data is valid", %{conn: conn} do
-    user = Repo.get_by(User, %{email: "test@test.com"})
+  test "updates chosen resource and redirects when data is valid", %{conn: conn, user: user} do
     post = Repo.insert! %Post{}
     conn = put conn, post_path(conn, :update, post), post: Map.merge(@valid_attrs, %{"author_id" => user.id})
     assert redirected_to(conn) == post_path(conn, :edit, post)
