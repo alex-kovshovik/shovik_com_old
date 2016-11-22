@@ -1,0 +1,33 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="logo">
+        Alex Kovshovik
+      </li>
+      <li>
+        <%= link "Home", to: page_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Blog", to: blog_path(@conn, :index) %>
+      </li>
+      <%= if current_user(@conn) do %>
+        <li>
+          <%= link "Posts", to: post_path(@conn, :index) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <%= if user = current_user(@conn) do %>
+        <li>
+          <%= link "Logout", to: session_path(@conn, :delete, user.id), method: :delete, class: "button alert" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link "Login", to: session_path(@conn, :new), class: "button" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

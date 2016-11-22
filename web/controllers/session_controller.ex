@@ -22,6 +22,7 @@ defmodule ShovikCom.SessionController do
   def delete(conn, _params) do
     conn
     |> delete_session(:current_user)
+    |> assign(:current_user, nil)
     |> put_flash(:info, "Signed out successfully!")
     |> redirect(to: page_path(conn, :index))
   end

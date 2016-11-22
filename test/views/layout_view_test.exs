@@ -2,17 +2,20 @@ defmodule ShovikCom.LayoutViewTest do
   use ShovikCom.ConnCase, async: true
 
   import ShovikCom.Factory
+  import Plug.Conn
 
   alias ShovikCom.LayoutView
 
   setup do
     user = insert(:user)
+    conn =
+      build_conn()
+      |> assign(:current_user, user)
 
-    {:ok, conn: build_conn(), user: user}
+    {:ok, conn: conn, user: user}
   end
 
-  test "current user returns the user in the session", %{conn: conn, user: user} do
-    conn = post conn, session_path(conn, :create), user: %{email: user.email, password: "12341234"}
+  test "current user returns the user in the session", %{conn: conn} do
     assert LayoutView.current_user(conn)
   end
 

@@ -1,6 +1,0 @@
-<%= if is_nil(current_user(@conn)) do %>
-<%= link("Login", to: session_path(@conn, :new)) %>
-<% else %>
-Current user: <%= current_user_name(@conn) %>
-<%= link("Logout", to: session_path(@conn, :delete, current_user(@conn)), method: :delete) %>
-<% end %>
