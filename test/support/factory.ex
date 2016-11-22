@@ -20,7 +20,8 @@ defmodule ShovikCom.Factory do
       author: build(:user),
       title: sequence(:title, &"Awesome blog about your mom #{&1}"),
       url: sequence(:url, &"awesome-blog-about-your-mom-#{&1}"),
-      body: "Yadayadayada... about your mom bwa-ha-ha-ha-ha!"
+      body: "Yadayadayada... about your mom bwa-ha-ha-ha-ha!",
+      publish_at: Ecto.DateTime.utc
     }
   end
 end

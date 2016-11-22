@@ -1,18 +1,11 @@
 defmodule ShovikCom.BlogControllerTest do
   use ShovikCom.ConnCase
 
-  alias ShovikCom.TestHelper
+  import ShovikCom.Factory
 
   setup do
-    {:ok, user} = TestHelper.create_user(%{email: "test@test.com",
-                                           password: "test",
-                                           password_confirmation: "test",
-                                           first_name: "test",
-                                           last_name: "test"})
-
-    {:ok, post} = TestHelper.create_post(user, %{title: "Test post 1",
-                                                 body: "Test post body1",
-                                                 publish_at: DateTime.utc_now })
+    post = insert(:post)
+    user = post.author
 
     conn = build_conn() |> login_user(user)
     {:ok, conn: conn, user: user, post: post}
