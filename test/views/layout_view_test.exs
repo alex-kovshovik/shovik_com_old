@@ -23,4 +23,8 @@ defmodule ShovikCom.LayoutViewTest do
     conn = delete conn, session_path(conn, :delete, user)
     refute LayoutView.current_user(conn)
   end
+
+  test "calculates years of experience" do
+    assert LayoutView.years_of_experience > 10 # LOL
+  end
 end

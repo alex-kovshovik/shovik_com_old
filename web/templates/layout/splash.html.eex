@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= render "head.html", conn: @conn %>
+
+  <body>
+    <%= render "navigation.html", conn: @conn %>
+
+    <section class="main-content row expanded">
+      <%= render "alerts.html", conn: @conn %>
+
+      <section class="text-center image-overlay row content">
+        <%= render @view_module, @view_template, assigns %>
+      </section>
+
+      <section class="about expanded row">
+        <div class="columns medium-12 large-4">
+          <div class="icon">
+            <i class="fi-like"></i>
+          </div>
+          <h2>About</h2>
+          <p>
+            <%= years_of_experience %> years of experience building great commercial software... and now this website.
+          </p>
+
+          <p>
+            This site is powered by <a href="http://elixir-lang.org">Elixir</a> and <a href="http://phoenixframework.org">Phoenix Framework</a>
+            mostly because I like to play with things, however <a href="http://elixir-lang.org">Elixir</a> is so nice and fast I will use it
+            for the more serious projects.
+          </p>
+        </div>
+
+        <div class="columns medium-12 large-4">
+          <div class="icon">
+            <i class="fi-social-twitter"></i>
+          </div>
+          <h2>Contact Me</h2>
+          <div class="menu-centered">
+            <ul class="menu vertical">
+              <li><a href="https://twitter.com/ashovik" title="Alex Kovshovik's Twitter profile">@ashovik</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="columns medium-12 large-4">
+          <div class="icon">
+            <i class="fi-pencil"></i>
+          </div>
+          <h2>I care</h2>
+          <p>
+            Customer care and timely response are my priority.
+          </p>
+        </div>
+      </section>
+
+      <section class="more-info expanded row">
+        This is an example design for the Phoenix Blog Engine project detailed in <a href="https://medium.com/@diamondgfx">Brandon Richey's</a>
+        series of <a href="https://medium.com/@diamondgfx/introduction-fe138ac6079d">Medium</a> posts.
+
+        This design is merely a starting template; I may want to go out and find my own
+        as well to make it look truly original! Brandon doesn't mind me using this one for now :)
+      </section>
+
+      <footer class="expanded row">
+        Copyright &copy; <%= Timex.today.year %> Alex Kovshovik
+      </footer>
+    </section>
+
+    <%= render "script.html", conn: @conn %>
+  </body>
+</html>

@@ -2,7 +2,7 @@
   <div class="top-bar-left">
     <ul class="menu">
       <li class="logo">
-        Alex Kovshovik
+        <%= link "Alex Kovshovik", to: "/" %>
       </li>
       <li>
         <%= link "Home", to: page_path(@conn, :index) %>
