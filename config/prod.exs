@@ -13,7 +13,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :shovik_com, ShovikCom.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
+  url: [host: "shovik.com", port: 8080],
   cache_static_manifest: "priv/static/manifest.json"
 
 # Do not print debug messages in production
