@@ -42,10 +42,7 @@ exports.config = {
     },
     sass: {
       options: {
-        includePaths: [
-          'node_modules/foundation-sites/scss',
-          'node_modules/motion-ui/src'
-        ]
+        includePaths: []
       }
     }
   },
@@ -63,7 +60,6 @@ exports.config = {
       jQuery: 'jquery'
     },
     styles: {
-      // simplemde: ['dist/simplemde.min.css']
     }
   }
 };

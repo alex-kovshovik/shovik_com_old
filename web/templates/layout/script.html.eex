@@ -1,6 +1,4 @@
 <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 <script type="text/javascript">
-  $(function() {
-    $(document).foundation();
-  });
+// Put onLoad stuff here - maybe.
 </script>

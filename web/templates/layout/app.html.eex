@@ -5,10 +5,10 @@
   <body>
     <%= render "navigation.html", conn: @conn %>
 
-    <section class="main-content row expanded">
+    <main>
       <%= render "alerts.html", conn: @conn %>
 
-      <div class="main row content">
+      <div>
         <%= render @view_module, @view_template, assigns %>
       </div>
     </section>

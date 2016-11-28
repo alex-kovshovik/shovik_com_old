@@ -3,67 +3,79 @@
   <%= render "head.html", conn: @conn %>
 
   <body>
-    <%= render "navigation.html", conn: @conn %>
+    <!-- <%= render "navigation.html", conn: @conn %> -->
+    <%= render "image-header.html", conn: @conn %>
 
-    <section class="main-content row expanded">
+    <main>
       <%= render "alerts.html", conn: @conn %>
 
-      <section class="text-center image-overlay row content">
+      <section>
         <%= render @view_module, @view_template, assigns %>
       </section>
 
-      <section class="about expanded row">
-        <div class="columns medium-12 large-4">
-          <div class="icon">
-            <i class="fi-like"></i>
-          </div>
+      <section>
+        <div>
           <h2>About</h2>
+
           <p>
-            <%= years_of_experience %> years of experience building great commercial software... and now this website.
+            Hi, I'm Alex Kovshovik.
           </p>
 
           <p>
-            This site is powered by <a href="http://elixir-lang.org">Elixir</a> and <a href="http://phoenixframework.org">Phoenix Framework</a>
-            mostly because I like to play with things, however <a href="http://elixir-lang.org">Elixir</a> is so nice and fast I will use it
-            for the more serious projects.
+            Software engineer, architect and manager with <%= years_of_experience %> years of experience
+            of building great commercial software... and now this website.
+          </p>
+
+          <p>
+            Also a father, a husband and
+            an avid <a href="https://www.youtube.com/channel/UClXi8o_QWm47VH_WZHSoYnQ" title="Link to FitCrossFit YouTube channel">crossfit enthusiast</a>.
           </p>
         </div>
 
-        <div class="columns medium-12 large-4">
-          <div class="icon">
-            <i class="fi-social-twitter"></i>
-          </div>
+        <div>
           <h2>Contact Me</h2>
-          <div class="menu-centered">
-            <ul class="menu vertical">
-              <li><a href="https://twitter.com/ashovik" title="Alex Kovshovik's Twitter profile">@ashovik</a></li>
+
+          <div>
+            Twitter is my social network of choice, send me a DM.
+          </div>
+          <div>
+            <ul>
+              <li><i class="fi fi-social-twitter"></i>&nbsp;<a href="https://twitter.com/ashovik" title="Alex Kovshovik's Twitter profile">@ashovik</a></li>
+              <li><i class="fi fi-social-google-plus"></i>&nbsp;<a href="https://plus.google.com/u/0/+AlexKovshovik" title="Alex Kovshovik's Google+ profile">Google+</a></li>
+              <li><i class="fi fi-social-stack-overflow"></i>&nbsp;<a href="http://stackoverflow.com/users/115680/alex-kovshovik" title="Alex Kovshovik's StackOverflow profile">StackOverflow</a></li>
+              <li><i class="fi fi-social-linkedin"></i>&nbsp;<a href="https://www.linkedin.com/in/alex-kovshovik-4532588" title="Alex Kovshovik's LinkedIn profile">LinkedIn</a></li>
+              <li><i class="fi fi-social-github"></i>&nbsp;<a href="https://github.com/alex-kovshovik" title="Alex Kovshovik's GitHub profile">GitHub</a></li>
             </ul>
           </div>
         </div>
 
-        <div class="columns medium-12 large-4">
-          <div class="icon">
-            <i class="fi-pencil"></i>
-          </div>
-          <h2>I care</h2>
+        <div>
+          <h2>Mission</h2>
+
           <p>
-            Customer care and timely response are my priority.
+            My mission is to build the software that is a pleasure to use and a
+            <a href="https://github.com/alex-kovshovik/the-anchorman" title="Source code of The Achorman: a toilet reservation app">pleasure to work on</a>:
+            <a href="https://github.com/alex-kovshovik/choker" title="Source code of Chuck Norris Jocker (Choker)">fun</a>,
+            <a href="https://github.com/alex-kovshovik/hobo-elm" title="Source code of HOBO app, a Highly Opinionated Budget Organizer">efficient</a>,
+            <a href="https://github.com/alex-kovshovik/shovik_com" title="Source code of this website">scalable, easy to maintain and future proof</a>.
+          </p>
+
+          <p>
+            I care about what I do: my customers and projects I work on always get a healthy dose of love and attention.
           </p>
         </div>
       </section>
 
-      <section class="more-info expanded row">
-        This is an example design for the Phoenix Blog Engine project detailed in <a href="https://medium.com/@diamondgfx">Brandon Richey's</a>
-        series of <a href="https://medium.com/@diamondgfx/introduction-fe138ac6079d">Medium</a> posts.
+      <footer>
+        <p>
+          This site is powered by <a href="http://elixir-lang.org">Elixir</a> and <a href="http://phoenixframework.org">Phoenix Framework</a>
+          mostly because I like to play with things, however <a href="http://elixir-lang.org">Elixir</a> is so nice and fast I will use it
+          for serious projects.
+        </p>
 
-        This design is merely a starting template; I may want to go out and find my own
-        as well to make it look truly original! Brandon doesn't mind me using this one for now :)
-      </section>
-
-      <footer class="expanded row">
         Copyright &copy; <%= Timex.today.year %> Alex Kovshovik
       </footer>
-    </section>
+    </main>
 
     <%= render "script.html", conn: @conn %>
   </body>
