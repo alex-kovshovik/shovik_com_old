@@ -19,7 +19,7 @@ defmodule ShovikCom.Mixfile do
   def application do
     [mod: {ShovikCom, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin, :ex_machina, :timex, :earmark,
+                    :phoenix_ecto, :phoenix_live_reload, :postgrex, :comeonin, :ex_machina, :timex, :earmark,
                     :edeliver]]
   end
 
