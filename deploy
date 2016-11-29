@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Building production release"
+mix edeliver update to production
+
+echo
+echo "Restarting production because live reload doesn't work yet"
+mix edeliver restart production
+
