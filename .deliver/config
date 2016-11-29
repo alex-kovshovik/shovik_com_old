@@ -6,7 +6,7 @@ BUILD_AT="/tmp/edeliver/shovik_com/builds"
 
 STAGING_HOSTS="138.197.21.158"
 STAGING_USER="app"
-DELIVER_TO="/srv/www/shovik_com"
+DELIVER_TO="/srv/www"
 
 # For *Phoenix* projects, symlink prod.secret.exs to our tmp source
 pre_erlang_get_and_update_deps() {
