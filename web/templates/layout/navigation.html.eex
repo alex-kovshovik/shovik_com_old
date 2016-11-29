@@ -4,7 +4,7 @@
     <li><%= link "Blog", to: blog_path(@conn, :index) %></li>
     <%= if user = current_user(@conn) do %>
       <li><%= link "Posts", to: post_path(@conn, :index) %></li>
-      <li><%= link "Logout", to: session_path(@conn, :delete, user.id), method: :delete %></li>
+      <li class="right"><%= link "Logout", to: session_path(@conn, :delete, user.id), method: :delete %></li>
     <% end %>
   </ul>
 </nav>

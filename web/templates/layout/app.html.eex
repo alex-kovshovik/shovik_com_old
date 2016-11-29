@@ -11,8 +11,9 @@
       <div>
         <%= render @view_module, @view_template, assigns %>
       </div>
-    </section>
+    </main>
 
+    <%= render "footer.html", conn: @conn %>
     <%= render "script.html", conn: @conn %>
   </body>
 </html>
