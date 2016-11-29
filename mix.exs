@@ -19,7 +19,8 @@ defmodule ShovikCom.Mixfile do
   def application do
     [mod: {ShovikCom, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin, :ex_machina, :timex]]
+                    :phoenix_ecto, :postgrex, :comeonin, :ex_machina, :timex, :earmark,
+                    :edeliver]]
   end
 
   # Specifies which paths to compile per environment.
@@ -43,7 +44,9 @@ defmodule ShovikCom.Mixfile do
      {:mix_test_watch, "~> 0.2.6"},
      {:ex_machina, "~> 1.0"},
      {:earmark, "~> 1.0"},
-     {:timex, "~> 3.1"}]
+     {:timex, "~> 3.1"},
+     {:distillery, "~> 0.10", warn_missing: false},
+     {:edeliver, "~> 1.4.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

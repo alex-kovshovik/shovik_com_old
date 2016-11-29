@@ -1,0 +1,19 @@
+APP="shovik_com"
+
+BUILD_HOST="138.197.21.158"
+BUILD_USER="app"
+BUILD_AT="/tmp/edeliver/shovik_com/builds"
+
+STAGING_HOSTS="138.197.21.158"
+STAGING_USER="app"
+DELIVER_TO="/srv/www/shovik_com"
+
+# For *Phoenix* projects, symlink prod.secret.exs to our tmp source
+pre_erlang_get_and_update_deps() {
+  local _prod_secret_path="/srv/www/prod.secret.exs"
+  if [ "$TARGET_MIX_ENV" = "prod" ]; then
+    __sync_remote "
+      ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+    "
+  fi
+}
