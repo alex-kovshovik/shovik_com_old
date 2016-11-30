@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= label f, :publish_at, class: "control-label" %>
-    <%= datetime_select f, :publish_at, class: "form-control" %>
+    <%= text_input f, :publish_at, class: "form-control datetime-picker" %>
     <%= error_tag f, :publish_at %>
   </div>
 
@@ -35,5 +35,19 @@
 <% end %>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css">
+
 <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-<script>var simplemde = new SimpleMDE();</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.js"></script>
+
+<script>
+  (function() {
+    var simplemde = new SimpleMDE();
+
+    jQuery(document).ready(function() {
+      console.log("Pickers found: " + jQuery(".datetime-picker").length.toString());
+      jQuery(".datetime-picker").datetimepicker();
+    });
+  })();
+</script>

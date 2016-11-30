@@ -60,6 +60,10 @@ exports.config = {
       // jQuery: 'jquery'
     },
     styles: {
-    }
+      // 'jquery-datetimepicker': ['build/jquery.datetimepicker.min.css']
+    },
+    static: [
+      // "node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"
+    ]
   }
 };
