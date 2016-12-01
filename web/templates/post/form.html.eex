@@ -46,8 +46,10 @@
     var simplemde = new SimpleMDE();
 
     jQuery(document).ready(function() {
-      console.log("Pickers found: " + jQuery(".datetime-picker").length.toString());
-      jQuery(".datetime-picker").datetimepicker();
+      jQuery(".datetime-picker").datetimepicker({
+        format: 'Y-m-d H:i:sO',
+        startDate: new Date()
+      });
     });
   })();
 </script>

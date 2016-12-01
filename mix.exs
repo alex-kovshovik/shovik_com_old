@@ -19,8 +19,8 @@ defmodule ShovikCom.Mixfile do
   def application do
     [mod: {ShovikCom, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin, :ex_machina, :timex, :earmark,
-                    :edeliver]]
+                    :phoenix_ecto, :postgrex, :comeonin, :ex_machina, :timex, :timex_ecto, :earmark,
+                    :tzdata, :edeliver]]
   end
 
   # Specifies which paths to compile per environment.
@@ -45,6 +45,7 @@ defmodule ShovikCom.Mixfile do
      {:ex_machina, "~> 1.0"},
      {:earmark, "~> 1.0"},
      {:timex, "~> 3.1"},
+     {:timex_ecto, "~> 3.0"},
      {:distillery, "~> 0.10", warn_missing: false},
      {:edeliver, "~> 1.4.0"}]
   end

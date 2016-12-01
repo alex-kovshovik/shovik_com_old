@@ -13,9 +13,9 @@ defmodule ShovikCom.Post do
     field :title, :string
     field :url, :string
     field :body, :string
-    field :publish_at, Ecto.DateTime
+    field :publish_at, Timex.Ecto.DateTime
 
-    timestamps()
+    timestamps
   end
 
   @doc """
