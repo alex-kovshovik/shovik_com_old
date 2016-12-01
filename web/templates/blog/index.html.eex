@@ -7,7 +7,7 @@
     </div>
 
     <div>
-      <small>Posted on <%= post.inserted_at %> by <%= post.author.first_name %></small>
+      <small>Posted on <%= format_posted_at(post.publish_at) %> by <%= post.author.first_name %></small>
     </div>
 
     <div>
