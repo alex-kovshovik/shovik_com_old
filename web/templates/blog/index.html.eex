@@ -9,9 +9,11 @@
     <div>
       <small>Posted on <%= post.inserted_at %> by <%= post.author.first_name %></small>
     </div>
-    
+
     <div>
       <%= markdown(post.body) %>
     </div>
   </div>
 <% end %>
+
+<%= render "_scripts.html" %>
