@@ -9,7 +9,11 @@ defmodule ShovikCom.BlogController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id) |> Repo.preload(:author)
+    post =
+    Post
+    |> Repo.get!(id)
+    |> Repo.preload(:author)
+
     render(conn, "show.html", post: post)
   end
 end

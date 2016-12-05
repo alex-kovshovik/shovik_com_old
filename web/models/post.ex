@@ -9,6 +9,7 @@ defmodule ShovikCom.Post do
 
   schema "posts" do
     belongs_to :author, ShovikCom.User
+    has_many :post_images, ShovikCom.PostImage
 
     field :title, :string
     field :url, :string

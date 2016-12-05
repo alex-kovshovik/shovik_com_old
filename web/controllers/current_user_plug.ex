@@ -1,4 +1,7 @@
 defmodule ShovikCom.CurrentUserPlug do
+  @moduledoc """
+  Loads current user before every request.
+  """
   import Plug.Conn
   import Phoenix.Controller, only: [put_flash: 3, redirect: 2]
 

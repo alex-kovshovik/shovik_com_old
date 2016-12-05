@@ -70,6 +70,10 @@ defmodule ShovikCom.PostControllerTest do
     assert Repo.get_by(Post, @valid_attrs)
   end
 
+  test "does not create post with data is invalid", %{conn: _conn} do
+    # TODO: add test here.
+  end
+
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     post = Repo.insert! %Post{}
     conn = put conn, post_path(conn, :update, post), post: @invalid_attrs
@@ -81,5 +85,9 @@ defmodule ShovikCom.PostControllerTest do
     conn = delete conn, post_path(conn, :delete, post)
     assert redirected_to(conn) == post_path(conn, :index)
     refute Repo.get(Post, post.id)
+  end
+
+  test "saves uploaded image", %{conn: _conn} do
+    # TODO: add test here.
   end
 end

@@ -20,7 +20,9 @@ defmodule ShovikCom.Router do
     get "/", PageController, :index
 
     resources "/blog", BlogController, only: [:index, :show]
-    resources "/posts", PostController, except: [:show]
+    resources "/posts", PostController, except: [:show] do
+      post "/create_image", PostController, :create_image
+    end
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 end

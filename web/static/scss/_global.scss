@@ -72,6 +72,26 @@ a {
   color: #e81c4f;
 }
 
+table {
+  width: 100%;
+
+  thead {
+    tr {
+      th {
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        vertical-align: top;
+      }
+    }
+  }
+}
+
 #footer {
   color: lightgray;
 
