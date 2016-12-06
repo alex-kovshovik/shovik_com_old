@@ -20,7 +20,7 @@ defmodule ShovikCom.Mixfile do
     [mod: {ShovikCom, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex, :comeonin, :ex_machina, :timex, :timex_ecto, :earmark,
-                    :tzdata, :ex_aws, :hackney, :poison, :arc, :arc_ecto, :edeliver]]
+                    :tzdata, :ex_aws, :hackney, :poison, :sweet_xml, :arc, :arc_ecto, :edeliver]]
   end
 
   # Specifies which paths to compile per environment.
