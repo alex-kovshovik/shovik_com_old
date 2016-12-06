@@ -19,7 +19,7 @@ defmodule ShovikCom.Picture do
   end
 
   def transform(:page, _) do
-    {:convert, "-resize 960x"}
+    {:convert, "-resize 960x480>"}
   end
 
   # Override the persisted filenames:
