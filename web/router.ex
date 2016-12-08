@@ -14,15 +14,24 @@ defmodule ShovikCom.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin do
+    plug ShovikCom.Admin.ForceUserPlug
+  end
+
   scope "/", ShovikCom do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :index
 
     resources "/blog", BlogController, only: [:index, :show]
-    resources "/posts", PostController, except: [:show] do
-      post "/create_image", PostController, :create_image
-    end
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+  end
+
+  scope "/admin", as: :admin do
+    pipe_through [:browser, :admin]
+
+    resources "/posts", ShovikCom.Admin.PostController, except: [:show] do
+      post "/create_image", ShovikCom.Admin.PostController, :create_image
+    end
   end
 end

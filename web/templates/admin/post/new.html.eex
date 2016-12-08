@@ -1,0 +1,6 @@
+<h2>New post</h2>
+
+<%= render "form.html", post_cs: @post_cs,
+                        action: admin_post_path(@conn, :create) %>
+
+<%= link "Back", to: admin_post_path(@conn, :index) %>

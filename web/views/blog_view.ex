@@ -11,4 +11,8 @@ defmodule ShovikCom.BlogView do
     {:ok, date_string} = publish_at |> Timex.format("{YYYY}-{M}-{D}")
     date_string
   end
+
+  def post_url(post) do
+    "#{post.id}-#{post.url}"
+  end
 end

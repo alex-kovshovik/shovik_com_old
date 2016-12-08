@@ -1,11 +1,9 @@
-defmodule ShovikCom.PostController do
+defmodule ShovikCom.Admin.PostController do
   use ShovikCom.Web, :controller
 
   alias ShovikCom.Post
   alias ShovikCom.PostImage
   alias ShovikCom.LayoutView
-
-  plug :authorize_user
 
   def index(conn, _params) do
     posts = Repo.all(from p in Post, preload: [:author])
@@ -33,7 +31,7 @@ defmodule ShovikCom.PostController do
       {:ok, _post} ->
         conn
         |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: post_path(conn, :index))
+        |> redirect(to: admin_post_path(conn, :index))
       {:error, post_cs} ->
         render(conn, "new.html", post_cs: post_cs)
     end
@@ -56,7 +54,7 @@ defmodule ShovikCom.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post updated successfully.")
-        |> redirect(to: post_path(conn, :edit, post))
+        |> redirect(to: admin_post_path(conn, :edit, post))
       {:error, post_cs} ->
         render(conn, "edit.html", post: post, post_cs: post_cs, image_cs: image_changeset(post))
     end
@@ -74,7 +72,7 @@ defmodule ShovikCom.PostController do
       {:ok, _image} ->
         conn
         |> put_flash(:info, "Post image is craeted")
-        |> redirect(to: post_path(conn, :edit, post))
+        |> redirect(to: admin_post_path(conn, :edit, post))
       {:error, _image_cs} ->
         conn
         |> put_flash(:error, "Couldn't save the image")
@@ -84,14 +82,11 @@ defmodule ShovikCom.PostController do
 
   def delete(conn, %{"id" => id}) do
     post = Repo.get!(Post, id)
-
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
     Repo.delete!(post)
 
     conn
     |> put_flash(:info, "Post deleted successfully.")
-    |> redirect(to: post_path(conn, :index))
+    |> redirect(to: admin_post_path(conn, :index))
   end
 
   defp load_post(id) do
@@ -104,18 +99,5 @@ defmodule ShovikCom.PostController do
     post
     |> build_assoc(:post_images)
     |> PostImage.changeset
-  end
-
-  defp authorize_user(conn, _opts) do
-    user = LayoutView.current_user(conn)
-
-    if user do
-      conn
-    else
-      conn
-      |> put_flash(:error, "You are not authorized, kindly navigate away.")
-      |> redirect(to: "/")
-      |> halt()
-    end
   end
 end

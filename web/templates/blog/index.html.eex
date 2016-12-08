@@ -3,7 +3,7 @@
 <%= for post <- @posts do %>
   <div>
     <div>
-      <h3><%= link post.title, to: blog_path(@conn, :show, post) %></h3>
+      <h3><%= link post.title, to: blog_path(@conn, :show, post_url(post)) %></h3>
     </div>
 
     <div>

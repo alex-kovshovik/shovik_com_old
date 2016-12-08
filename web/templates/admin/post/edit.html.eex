@@ -1,9 +1,9 @@
 <h2>Edit post</h2>
 
 <%= render "form.html", post_cs: @post_cs,
-                        action: post_path(@conn, :update, @post) %>
+                        action: admin_post_path(@conn, :update, @post) %>
 
 <h2>Post images</h2>
 <%= render "images.html", post: @post, image_cs: @image_cs %>
 
-<%= link "Back", to: post_path(@conn, :index) %>
+<%= link "Back", to: admin_post_path(@conn, :index) %>

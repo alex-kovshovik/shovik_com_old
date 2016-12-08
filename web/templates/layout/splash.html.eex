@@ -3,10 +3,10 @@
   <%= render "head.html", conn: @conn %>
 
   <body>
-    <%= render "image-header.html", conn: @conn %>
+    <%= render "alerts.html", conn: @conn %>
 
+    <%= render "image-header.html", conn: @conn %>
     <main>
-      <%= render "alerts.html", conn: @conn %>
 
       <section>
         <%= render @view_module, @view_template, assigns %>
