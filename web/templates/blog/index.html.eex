@@ -11,9 +11,12 @@
     </div>
 
     <div class="section group">
-      <div class="col span_4_of_12">
-        <img src="<%= post_image(post) %>" />
-      </div>
+      <% image_url = post_image(post) %>
+      <%= if image_url do %>
+        <div class="col span_4_of_12">
+          <img src="<%= post_image(post) %>" />
+        </div>
+      <%= end %>
       <div class="col span_8_of_12">
         <%= post_preview(post) %>
       </div>

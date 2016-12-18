@@ -39,7 +39,7 @@ defmodule ShovikCom.BlogView do
   end
 
   def post_image_url(image) when is_nil(image) do
-    "no image url here"
+    nil
   end
 
   def post_image_url(image) do
