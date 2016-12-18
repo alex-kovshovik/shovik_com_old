@@ -10,8 +10,13 @@
       <small>Posted on <%= format_posted_at(post.publish_at) %> by <%= post.author.first_name %></small>
     </div>
 
-    <div>
-      <%= markdown(post.body) %>
+    <div class="section group">
+      <div class="col span_4_of_12">
+        <img src="<%= post_image(post) %>" />
+      </div>
+      <div class="col span_8_of_12">
+        <%= post_preview(post) %>
+      </div>
     </div>
   </div>
 <% end %>

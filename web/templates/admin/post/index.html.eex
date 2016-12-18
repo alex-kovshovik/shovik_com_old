@@ -14,13 +14,12 @@
   <tbody>
 <%= for post <- @posts do %>
     <tr>
-      <td><%= post.title %></td>
-      <td><%= post.url %></td>
+      <td><%= link post.title, to: admin_post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %></td>
+      <td><%= link post.url, to: admin_post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %></td>
       <td><%= post.author.first_name %></td>
       <td><%= post.publish_at %></td>
 
       <td class="text-right">
-        <%= link "Edit", to: admin_post_path(@conn, :edit, post), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: admin_post_path(@conn, :delete, post), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
