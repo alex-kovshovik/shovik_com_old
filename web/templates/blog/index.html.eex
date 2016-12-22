@@ -1,25 +1,16 @@
-<h1>Blog</h1>
-
 <%= for post <- @posts do %>
-  <div>
-    <div>
-      <h3><%= link post.title, to: blog_path(@conn, :show, post_url(post)) %></h3>
-    </div>
-
-    <div>
-      <small>Posted on <%= format_posted_at(post.publish_at) %> by <%= post.author.first_name %></small>
-    </div>
-
-    <div class="section group">
-      <% image_url = post_image(post) %>
-      <%= if image_url do %>
-        <div class="col span_4_of_12">
-          <img src="<%= post_image(post) %>" />
-        </div>
-      <%= end %>
-      <div class="col span_8_of_12">
-        <%= post_preview(post) %>
+  <div class="section group">
+    <% image_url = post_image(post) %>
+    <%= if image_url do %>
+      <div class="col span_4_of_12 blog-image" style="background-image: url('<%= image_url %>')">
+        &nbsp;
       </div>
+    <%= end %>
+    <div class="col span_8_of_12 blog-preview">
+      <h2><%= link post.title, to: blog_path(@conn, :show, post_url(post)) %></h2>
+      <small>Posted on <%= format_posted_at(post.publish_at) %> by <%= post.author.first_name %></small>
+
+      <%= post_preview(post) %>
     </div>
   </div>
 <% end %>

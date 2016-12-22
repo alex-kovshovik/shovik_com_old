@@ -1,6 +1,9 @@
 defmodule ShovikCom.Admin.PostController do
   use ShovikCom.Web, :controller
 
+  import Ecto
+  import Ecto.Changeset
+
   alias ShovikCom.Post
   alias ShovikCom.PostImage
   alias ShovikCom.LayoutView
@@ -61,7 +64,7 @@ defmodule ShovikCom.Admin.PostController do
   end
 
   def create_image(conn, %{"post_id" => post_id, "post_image" => image_params}) do
-    post = Repo.get!(Post, post_id)
+    post = load_post(post_id)
 
     post_image =
       post
@@ -78,6 +81,37 @@ defmodule ShovikCom.Admin.PostController do
         |> put_flash(:error, "Couldn't save the image")
         |> edit(%{"id" => post.id})
     end
+  end
+
+  def make_image_primary(conn, %{"post_id" => post_id, "post_image_id" => post_image_id}) do
+    post = load_post(post_id)
+    post_image = Repo.get!(PostImage, post_image_id)
+
+    from(pi in PostImage, where: pi.post_id == ^post_id)
+    |> Repo.update_all(set: [primary: false])
+
+    post_image
+    |> PostImage.changeset
+    |> put_change(:primary, true)
+    |> Repo.update
+
+    conn
+    |> put_flash(:info, "New primary image is set successfully")
+    |> redirect(to: admin_post_path(conn, :edit, post))
+  end
+
+  def delete_image(conn, %{"post_id" => post_id, "post_image_id" => post_image_id}) do
+    post = load_post(post_id)
+    post_image = Repo.get!(PostImage, post_image_id)
+
+    image_url = ShovikCom.Picture.url({post_image.picture, post_image})
+    ShovikCom.Picture.delete({image_url, post_image})
+
+    Repo.delete(post_image)
+
+    conn
+    |> put_flash(:info, "Image is deleted successfully")
+    |> redirect(to: admin_post_path(conn, :edit, post))
   end
 
   def delete(conn, %{"id" => id}) do

@@ -1,0 +1,15 @@
+<h3>New image</h3>
+
+<%= form_for @image_cs, "/admin/posts/#{@post.id}/create_image", [method: :post, multipart: true], fn f -> %>
+  <div class="form-group">
+    <%= label f, "Select file" %>
+    <%= file_input f, :picture %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, "Primary" %>
+    <%= checkbox f, :primary %>
+  </div>
+
+  <%= submit "Submit", class: "btn btn-primary" %>
+<% end %>

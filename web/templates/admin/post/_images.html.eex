@@ -1,0 +1,2 @@
+<%= render "_list_images.html", post: @post %>
+<%= render "_new_image.html", post: @post, image_cs: @image_cs %>

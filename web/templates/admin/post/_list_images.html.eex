@@ -1,0 +1,31 @@
+<% image_chunks = @post.post_images |> Enum.chunk(3, 3, []) %>
+
+<%= for chunk <- image_chunks  do %>
+  <div class="section group">
+    <%= for post_image <- chunk do %>
+      <div class="col span_4_of_12">
+        <div class="image-box">
+          <div class="image-preview" style="background-image: url(<%= ShovikCom.Picture.url({post_image.picture, post_image}, :thumb) %>)">
+            &nbsp;
+          </div>
+
+          <button onClick="copyToClipboard('<%= ShovikCom.Picture.url({post_image.picture, post_image}, :page) %>')">Copy URL</button>
+          <a href="/admin/posts/<%= @post.id %>/delete_image?post_image_id=<%= post_image.id %>" onClick="return confirm('Are you sure?')">Delete</a>
+          <a href="/admin/posts/<%= @post.id %>/make_image_primary?post_image_id=<%= post_image.id %>">Make&nbsp;primary</a>
+
+          <%= if post_image.primary do %>
+            <span class="label-primary">Primary</span>
+          <%= end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  (function() {
+    window.copyToClipboard = function(text) {
+      window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    }
+  })();
+</script>

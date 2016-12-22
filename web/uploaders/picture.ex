@@ -28,9 +28,9 @@ defmodule ShovikCom.Picture do
   # end
 
   # Override the storage directory:
-  # def storage_dir(version, {file, scope}) do
-  #   "uploads/user/avatars/#{scope.id}"
-  # end
+  def storage_dir(_version, {_file, scope}) do
+    "uploads/post_images/#{scope.post_id}"
+  end
 
   # Provide a default URL if there hasn't been a file uploaded
   # def default_url(version, scope) do
@@ -42,7 +42,7 @@ defmodule ShovikCom.Picture do
   #    :content_encoding, :content_length, :content_type,
   #    :expect, :expires, :storage_class, :website_redirect_location]
   #
-  # def s3_object_headers(version, {file, scope}) do
-  #   [content_type: Plug.MIME.path(file.file_name)]
-  # end
+  def s3_object_headers(_version, {_file, _scope}) do
+    [content_disposition: "inline"]
+  end
 end

@@ -32,6 +32,8 @@ defmodule ShovikCom.Router do
 
     resources "/posts", ShovikCom.Admin.PostController, except: [:show] do
       post "/create_image", ShovikCom.Admin.PostController, :create_image
+      get "/make_image_primary", ShovikCom.Admin.PostController, :make_image_primary
+      get "/delete_image", ShovikCom.Admin.PostController, :delete_image # TODO: I know this must be delete, I'll fix it later.
     end
   end
 end
