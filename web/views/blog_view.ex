@@ -25,7 +25,7 @@ defmodule ShovikCom.BlogView do
     post.body
     |> String.split("\n\r")
     |> Enum.filter(fn(s) -> String.length(s) > 0 end)
-    |> Enum.take(2)
+    |> Enum.take(1)
     |> Enum.join("\n")
     |> markdown
   end
