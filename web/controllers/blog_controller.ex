@@ -4,7 +4,12 @@ defmodule ShovikCom.BlogController do
   alias ShovikCom.Post
 
   def index(conn, _params) do
-    posts = Repo.all(from p in Post, preload: [:author])
+    now = Timex.now
+
+    posts = Repo.all(from p in Post,
+                     where: p.publish_at <= ^now,
+                     order_by: [desc: p.publish_at],
+                     preload: [:author])
     render(conn, "index.html", posts: posts)
   end
 
