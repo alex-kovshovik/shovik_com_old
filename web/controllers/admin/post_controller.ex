@@ -9,7 +9,8 @@ defmodule ShovikCom.Admin.PostController do
   alias ShovikCom.LayoutView
 
   def index(conn, _params) do
-    posts = Repo.all(from p in Post, preload: [:author])
+    posts = Repo.all(from p in Post, order_by: [desc: p.publish_at], preload: [:author])
+
     render(conn, "index.html", posts: posts)
   end
 
