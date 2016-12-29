@@ -13,12 +13,12 @@ use Mix.Config
 # which you typically run after static files are built.
 config :shovik_com, ShovikCom.Endpoint,
   http: [port: {:system, "PORT"} || 8080],
-  url: [host: "shovik.com", port: {:system, "PORT"}  || 8080],
+  url: [host: "shovik.com", port: {:system, "PORT"} || 8080],
   cache_static_manifest: "priv/static/manifest.json",
   server: true
 
-# Do not print debug messages in production
-config :logger, level: :debug
+config :logger,
+  level: (if is_nil(System.get_env("LOG_LEVEL")), do: :debug, else: System.get_env("LOG_LEVEL") |> String.to_atom)
 
 config :comeonin, bcrypt_log_rounds: 14
 

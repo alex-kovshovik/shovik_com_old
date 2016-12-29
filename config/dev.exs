@@ -14,7 +14,6 @@ config :shovik_com, ShovikCom.Endpoint,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../", __DIR__)]]
 
-
 # Watch static and templates for browser reloading.
 config :shovik_com, ShovikCom.Endpoint,
   live_reload: [
@@ -26,8 +25,9 @@ config :shovik_com, ShovikCom.Endpoint,
     ]
   ]
 
-# Do not include metadata nor timestamps in development logs
-config :logger, :console, format: "[$level] $message\n"
+config :logger,
+  level: (if is_nil(System.get_env("LOG_LEVEL")), do: :debug, else: System.get_env("LOG_LEVEL") |> String.to_atom),
+  console: [format: "[$level] $message\n"]
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
