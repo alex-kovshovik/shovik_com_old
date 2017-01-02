@@ -8,6 +8,8 @@ BUILD_HOST="138.197.21.158"
 BUILD_USER="app"
 BUILD_AT="/tmp/edeliver/shovik_com/builds"
 
+RELEASE_STORE=app@138.197.21.158:/srv/www/shovik_com/release_store/
+
 PRODUCTION_HOSTS="138.197.21.158"
 PRODUCTION_USER="app"
 

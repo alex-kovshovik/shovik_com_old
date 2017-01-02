@@ -46,7 +46,7 @@ defmodule ShovikCom.Mixfile do
      {:earmark, "~> 1.0"},
      {:timex, "~> 3.1"},
      {:timex_ecto, "~> 3.0"},
-     {:distillery, "~> 0.10", warn_missing: false},
+     {:distillery, "~> 1.0"},
      {:edeliver, "~> 1.4.0"},
 
      # File attachments
