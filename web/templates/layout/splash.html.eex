@@ -4,8 +4,8 @@
 
   <body>
     <%= render "alerts.html", conn: @conn %>
-
     <%= render "image-header.html", conn: @conn %>
+
     <main>
 
       <section>
