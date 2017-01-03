@@ -39,7 +39,7 @@
 
   <section class="section group">
     <div class="col span_12_of_12">
-      Copyright &copy; <%= Timex.today.year %> Alex Kovshovik
+      Copyright &copy; <%= Timex.today.year %> Alex Kovshovik. Version <%= current_version %>
     </div>
   </section>
 </footer>

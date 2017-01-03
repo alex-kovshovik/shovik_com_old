@@ -15,4 +15,12 @@ defmodule ShovikCom.LayoutView do
   def years_of_experience do
     Timex.today.year - @career_start_date.year
   end
+
+  def current_version do
+    Application.loaded_applications
+    |> Enum.filter(&(elem(&1, 0) == :shovik_com))
+    |> List.first
+    |> elem(2)
+    |> to_string
+  end
 end
