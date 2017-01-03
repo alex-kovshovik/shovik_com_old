@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+USING_DISTILLERY=true
+
 APP="shovik_com"
 
 AUTO_VERSION="git-revision"
