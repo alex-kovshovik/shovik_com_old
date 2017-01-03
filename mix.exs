@@ -46,8 +46,6 @@ defmodule ShovikCom.Mixfile do
      {:earmark, "~> 1.0"},
      {:timex, "~> 3.1"},
      {:timex_ecto, "~> 3.0"},
-     {:distillery, "~> 1.0"},
-     {:edeliver, "~> 1.4.0"},
 
      # File attachments
      {:arc, "~> 0.6.0-rc3"},
@@ -55,7 +53,12 @@ defmodule ShovikCom.Mixfile do
      {:ex_aws, "~> 1.0.0-rc3"},
      {:hackney, "~> 1.5"},
      {:poison, "~> 2.0"},
-     {:sweet_xml, "~> 0.5"}]
+     {:sweet_xml, "~> 0.5"},
+
+     # Deployment
+     {:distillery, "~> 1.0"},
+     {:edeliver, "~> 1.4.0"}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

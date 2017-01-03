@@ -6,6 +6,7 @@ environment :prod do
   set include_erts: true
   set include_src: false
   set cookie: :"OYQ>8j$rWRU{R0ts|mtNU-V-i!1i|=MC.X+q9MR/KYfbFo6_c}+;~aF~.R5:%Ra;"
+  set output_dir: "rel/shovik_com"
 end
 
 release :shovik_com do
