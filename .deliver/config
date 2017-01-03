@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-APP="current_release"
+APP="shovik_com"
 
 GIT_CLEAN_PATHS="rel priv/generated"
 
