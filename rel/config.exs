@@ -8,6 +8,6 @@ environment :prod do
   set cookie: :"OYQ>8j$rWRU{R0ts|mtNU-V-i!1i|=MC.X+q9MR/KYfbFo6_c}+;~aF~.R5:%Ra;"
 end
 
-release :shovik_com do
+release :current_release do
   set version: current_version(:shovik_com)
 end
