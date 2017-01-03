@@ -1,28 +1,20 @@
 #!/usr/bin/env bash
-
-USING_DISTILLERY=true
-
-APP="shovik_com"
-
-AUTO_VERSION="git-revision"
-GIT_CLEAN_PATHS="_build rel priv/generated"
+APP="current_release"
 
 BUILD_HOST="138.197.21.158"
 BUILD_USER="app"
-BUILD_AT="/tmp/edeliver/shovik_com/builds"
+BUILD_AT="/srv/www/shovik_com/edeliver"
 
 RELEASE_STORE=app@138.197.21.158:/srv/www/shovik_com/release_store/
 
 PRODUCTION_HOSTS="138.197.21.158"
 PRODUCTION_USER="app"
 
-DELIVER_TO="/srv/www"
+DELIVER_TO="/srv/www/shovik_com"
 
-# links the prod.secret.exs file you keep sequestered on your build
-# machine into the build directory.
 pre_erlang_get_and_update_deps() {
   # copy it on the build host to the build directory when building
-  local _secret_config_file_on_build_host="/srv/www/prod.secret.exs"
+  local _secret_config_file_on_build_host="/srv/www/shovik_com/prod.secret.exs"
   if [ "$TARGET_MIX_ENV" = "prod" ]; then
     status "Linking '$_secret_config_file_on_build_host' to build config dir"
     __sync_remote "
@@ -31,37 +23,30 @@ pre_erlang_get_and_update_deps() {
   fi
 }
 
-# runs the phoenix.digest mix command, which gets rid of a missing
-# manifest file error
 pre_erlang_clean_compile() {
-  status "Installing NodeJS dependencies"
+  status "Installing nodejs dependencies"
   __sync_remote "
-    [ -f ~/.profile ] && source ~/.profile # load profile (optional)
-    set -e # fail if any command fails (recommended)
-    cd '$BUILD_AT' # enter the build directory on the build host (required)
-    # prepare something
-    mkdir -p priv/static # required by the phoenix.digest task
-    # run your custom task
+    [ -f ~/.profile ] && source ~/.profile
+    set -e
+    cd '$BUILD_AT
+
     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm install
   "
-  status "Building frontend items"
+  status "Building brunch assets"
   __sync_remote "
-    [ -f ~/.profile ] && source ~/.profile # load profile (optional)
-    set -e # fail if any command fails (recommended)
-    cd '$BUILD_AT' # enter the build directory on the build host (required)
-    # prepare something
-    mkdir -p priv/static # required by the phoenix.digest task
-    # run your custom task
+    [ -f ~/.profile ] && source ~/.profile
+    set -e
+    cd '$BUILD_AT'
+
+    mkdir -p priv/static
     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm run deploy
   "
-  status "Running phoenix.digest" # log output prepended with "----->"
-  __sync_remote " # runs the commands on the build host
-    [ -f ~/.profile ] && source ~/.profile # load profile (optional)
-    set -e # fail if any command fails (recommended)
-    cd '$BUILD_AT' # enter the build directory on the build host (required)
-    # prepare something
-    mkdir -p priv/static # required by the phoenix.digest task
-    # run your custom task
+  status "Running phoenix.digest"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile
+    set -e #
+    cd '$BUILD_AT'
+
     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phoenix.digest $SILENCE
   "
 }
