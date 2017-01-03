@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 APP="current_release"
 
+GIT_CLEAN_PATHS="rel priv/generated"
+
 BUILD_HOST="138.197.21.158"
 BUILD_USER="app"
 BUILD_AT="/srv/www/shovik_com/edeliver"
@@ -32,6 +34,7 @@ pre_erlang_clean_compile() {
 
     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm install
   "
+
   status "Building brunch assets"
   __sync_remote "
     [ -f ~/.profile ] && source ~/.profile
@@ -41,6 +44,16 @@ pre_erlang_clean_compile() {
     mkdir -p priv/static
     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm run deploy
   "
+
+  status "Compiling code"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile
+    set -e #
+    cd '$BUILD_AT'
+
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD do deps.get, compile
+  "
+
   status "Running phoenix.digest"
   __sync_remote "
     [ -f ~/.profile ] && source ~/.profile
