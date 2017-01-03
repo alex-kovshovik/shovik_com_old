@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 APP="shovik_com"
 
-GIT_CLEAN_PATHS="_build rel priv/generated"
-
 BUILD_HOST="138.197.21.158"
 BUILD_USER="app"
 BUILD_AT="/srv/www/shovik_com/edeliver"
