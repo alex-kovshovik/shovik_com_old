@@ -4,7 +4,7 @@ defmodule ShovikCom.LayoutView do
   @career_start_date ~D[2003-09-01]
 
   def page_title(%{assigns: %{title: title}}) when is_bitstring(title), do: "#{title} - Alex Kovshovik"
-  def page_title(_), do: "Alex Kovshovik"
+  def page_title(_), do: "Alex Kovshovik - Professional Software Consultant"
 
   def current_user_name(conn) do
     user = conn.assigns[:current_user]

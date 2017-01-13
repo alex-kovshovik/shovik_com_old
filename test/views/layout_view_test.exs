@@ -29,7 +29,7 @@ defmodule ShovikCom.LayoutViewTest do
   end
 
   test "renders default page title", %{conn: conn} do
-    assert LayoutView.page_title(conn) == "Alex Kovshovik"
+    assert LayoutView.page_title(conn) == "Alex Kovshovik - Professional Software Consultant"
   end
 
   test "renders cool page title", %{conn: conn} do
