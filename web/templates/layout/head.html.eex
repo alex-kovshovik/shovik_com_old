@@ -8,6 +8,6 @@
     <%= tag :meta, name: "channel_token", content: Phoenix.Token.sign(@conn, "user", current_user.id) %>
   <% end %>
 
-  <title>Alex Kovshovik</title>
+  <title><%= page_title(@conn) %></title>
   <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
 </head>

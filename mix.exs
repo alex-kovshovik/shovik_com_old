@@ -3,7 +3,7 @@ defmodule ShovikCom.Mixfile do
 
   def project do
     [app: :shovik_com,
-     version: "0.0.10",
+     version: "0.0.11",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,

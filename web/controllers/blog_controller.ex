@@ -10,7 +10,7 @@ defmodule ShovikCom.BlogController do
                      where: p.publish_at <= ^now,
                      order_by: [desc: p.publish_at],
                      preload: [:author])
-    render(conn, "index.html", posts: posts)
+    render(conn, "index.html", posts: posts, title: "Blog")
   end
 
   def show(conn, %{"id" => id}) do
@@ -21,6 +21,6 @@ defmodule ShovikCom.BlogController do
       |> Repo.get!(id)
       |> Repo.preload(:author)
 
-    render(conn, "show.html", post: post)
+    render(conn, "show.html", post: post, title: post.title)
   end
 end

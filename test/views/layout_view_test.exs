@@ -27,4 +27,13 @@ defmodule ShovikCom.LayoutViewTest do
   test "calculates years of experience" do
     assert LayoutView.years_of_experience > 10 # LOL
   end
+
+  test "renders default page title", %{conn: conn} do
+    assert LayoutView.page_title(conn) == "Alex Kovshovik"
+  end
+
+  test "renders cool page title", %{conn: conn} do
+    conn = assign(conn, :title, "Cool")
+    assert LayoutView.page_title(conn) == "Cool - Alex Kovshovik"
+  end
 end
