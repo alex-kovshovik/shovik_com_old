@@ -3,7 +3,7 @@ defmodule ShovikCom.Mixfile do
 
   def project do
     [app: :shovik_com,
-     version: "0.0.13",
+     version: "0.0.14",
      elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -37,7 +37,7 @@ defmodule ShovikCom.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 2.3"},
-     {:credo, "~> 0.5.2"},
+     {:credo, "~> 0.5.2", runtime: false},
      {:mix_test_watch, "~> 0.2.6"},
      {:ex_machina, "~> 1.0"},
      {:earmark, "~> 1.0"},
@@ -53,8 +53,8 @@ defmodule ShovikCom.Mixfile do
      {:sweet_xml, "~> 0.6.3"},
 
      # Deployment
-     {:distillery, "~> 1.1"},
-     {:edeliver, "~> 1.4.0"}
+     {:distillery, "~> 1.1", runtime: false},
+     {:edeliver, "~> 1.4.0", runtime: false}
    ]
   end
 
