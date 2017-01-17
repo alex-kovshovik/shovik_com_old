@@ -12,10 +12,9 @@ defmodule ShovikCom do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Start the Ecto repository
       supervisor(ShovikCom.Repo, []),
-      # Start the endpoint when the application starts
       supervisor(ShovikCom.Endpoint, []),
+      supervisor(ConCache, [[], [name: :shovik_cache]])
       # Start your own worker by calling: ShovikCom.Worker.start_link(arg1, arg2, arg3)
       # worker(ShovikCom.Worker, [arg1, arg2, arg3]),
     ]
