@@ -5,7 +5,7 @@ defmodule ShovikCom.PostControllerTest do
 
   alias ShovikCom.Post
 
-  @valid_attrs %{body: "some content", title: "some content", url: "some content"}
+  @valid_attrs %{preview: "preview content", body: "some content", title: "some content", url: "some content"}
   @invalid_attrs %{}
 
   setup do
@@ -24,16 +24,15 @@ defmodule ShovikCom.PostControllerTest do
     assert html_response(conn, 200) =~ "Listing posts"
   end
 
-  # TODO: to figure out later: how to disable authenticated users for certain tests.
-  # test "redirects to home page when unauthenticated", %{conn: conn, user: user} do
-  #   conn =
-  #     delete(conn, session_path(conn, :delete, user))
-  #     |> get(conn, admin_post_path(conn, :index))
-  #
-  #   assert get_flash(conn, :error) == "You are not authorized, kindly navigate away."
-  #   assert redirected_to(conn) == "/"
-  #   assert conn.halted
-  # end
+  test "redirects to home page when unauthenticated", %{conn: conn} do
+    conn =
+      build_conn()
+      |> get(admin_post_path(conn, :index))
+
+    assert get_flash(conn, :error) == "You are not authorized, kindly navigate away."
+    assert redirected_to(conn) == "/"
+    assert conn.halted
+  end
 
   test "renders form for new resources", %{conn: conn} do
     conn = get conn, admin_post_path(conn, :new)

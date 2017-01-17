@@ -14,7 +14,7 @@ defmodule ShovikCom.PostImage do
     field :picture, ShovikCom.Picture.Type
     field :primary, :boolean
 
-    timestamps
+    timestamps()
   end
 
   def changeset(post_image, params \\ %{}) do

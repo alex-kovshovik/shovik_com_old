@@ -14,7 +14,7 @@ defmodule ShovikCom.User do
     field :last_name, :string
     field :password_digest, :string
 
-    timestamps
+    timestamps()
 
     # Virtual fields
     field :password, :string, virtual: true

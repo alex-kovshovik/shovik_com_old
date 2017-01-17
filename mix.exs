@@ -3,8 +3,8 @@ defmodule ShovikCom.Mixfile do
 
   def project do
     [app: :shovik_com,
-     version: "0.0.12",
-     elixir: "~> 1.2",
+     version: "0.0.13",
+     elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -17,10 +17,7 @@ defmodule ShovikCom.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {ShovikCom, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin, :ex_machina, :timex, :timex_ecto, :earmark,
-                    :tzdata, :ex_aws, :hackney, :poison, :sweet_xml, :arc, :arc_ecto, :edeliver]]
+    [mod: {ShovikCom, []}]
   end
 
   # Specifies which paths to compile per environment.
@@ -44,16 +41,16 @@ defmodule ShovikCom.Mixfile do
      {:mix_test_watch, "~> 0.2.6"},
      {:ex_machina, "~> 1.0"},
      {:earmark, "~> 1.0"},
-     {:timex, "~> 3.1"},
-     {:timex_ecto, "~> 3.0"},
+     {:timex, "~> 3.1.7"},
+     {:timex_ecto, "~> 3.1.1"},
 
      # File attachments
-     {:arc, "~> 0.6.0-rc3"},
-     {:arc_ecto, "~> 0.5.0-rc1"},
-     {:ex_aws, "~> 1.0.0-rc3"},
-     {:hackney, "~> 1.5"},
+     {:arc, "~> 0.6.0"},
+     {:arc_ecto, "~> 0.5.0"},
+     {:ex_aws, "~> 1.0.0"},
+     {:hackney, "~> 1.6"},
      {:poison, "~> 2.0"},
-     {:sweet_xml, "~> 0.5"},
+     {:sweet_xml, "~> 0.6.3"},
 
      # Deployment
      {:distillery, "~> 1.0"},

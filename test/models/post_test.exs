@@ -3,7 +3,7 @@ defmodule ShovikCom.PostTest do
 
   alias ShovikCom.Post
 
-  @valid_attrs %{body: "some content", title: "some content", url: "some content", author_id: 42}
+  @valid_attrs %{preview: "preview content", body: "some content", title: "some content", url: "some content", author_id: 42}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

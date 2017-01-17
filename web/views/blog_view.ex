@@ -22,11 +22,7 @@ defmodule ShovikCom.BlogView do
   end
 
   def post_preview(post) do
-    post.body
-    |> String.split("\n\r")
-    |> Enum.filter(fn(s) -> String.length(s) > 0 end)
-    |> Enum.take(1)
-    |> Enum.join("\n")
+    post.preview
     |> markdown
   end
 
@@ -38,11 +34,6 @@ defmodule ShovikCom.BlogView do
     |> post_image_url
   end
 
-  def post_image_url(image) when is_nil(image) do
-    nil
-  end
-
-  def post_image_url(image) do
-    ShovikCom.Picture.url({image.picture, image}, :thumb)
-  end
+  def post_image_url(image) when is_nil(image), do: nil
+  def post_image_url(image), do: ShovikCom.Picture.url({image.picture, image}, :thumb)
 end

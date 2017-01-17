@@ -14,10 +14,11 @@ defmodule ShovikCom.Post do
 
     field :title, :string
     field :url, :string
+    field :preview, :string
     field :body, :string
     field :publish_at, Timex.Ecto.DateTime
 
-    timestamps
+    timestamps()
   end
 
   @doc """
@@ -25,7 +26,7 @@ defmodule ShovikCom.Post do
   """
   def changeset(post, params \\ %{}) do
     post
-    |> cast(params, [:title, :url, :body, :publish_at, :author_id])
-    |> validate_required([:title, :body, :author_id])
+    |> cast(params, [:title, :url, :preview, :body, :publish_at, :author_id])
+    |> validate_required([:title, :url, :preview, :body, :author_id])
   end
 end

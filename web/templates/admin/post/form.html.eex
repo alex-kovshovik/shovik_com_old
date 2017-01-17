@@ -24,8 +24,14 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :preview, class: "control-label" %>
+    <%= textarea f, :preview, class: "form-control", id: "markdown_preview" %>
+    <%= error_tag f, :preview %>
+  </div>
+
+  <div class="form-group">
     <%= label f, :body, class: "control-label" %>
-    <%= textarea f, :body, class: "form-control" %>
+    <%= textarea f, :body, class: "form-control", id: "markdown_body" %>
     <%= error_tag f, :body %>
   </div>
 
@@ -43,7 +49,8 @@
 
 <script>
   (function() {
-    var simplemde = new SimpleMDE();
+    var simplemdePreview = new SimpleMDE({ element: document.getElementById("markdown_preview")});
+    var simplemdeBody = new SimpleMDE({ element: document.getElementById("markdown_body")});
 
     jQuery(document).ready(function() {
       jQuery(".datetime-picker").datetimepicker({

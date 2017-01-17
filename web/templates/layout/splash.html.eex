@@ -21,7 +21,7 @@
           </p>
 
           <p>
-            Software engineer, architect and manager with <%= years_of_experience %> years of experience
+            Software engineer, architect and manager with <%= years_of_experience() %> years of experience
             of building great commercial software... and now this website.
           </p>
 
