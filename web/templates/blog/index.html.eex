@@ -1,4 +1,6 @@
-<%= for post <- @posts do %>
+<%= if @page.page_number > 1, do: pagination_links @page %>
+
+<%= for post <- @page.entries do %>
   <div class="section group blog-post">
     <% image_url = post_image(post)
        background_style = if is_nil(image_url), do: "", else: "background-image: url('#{image_url}')" %>

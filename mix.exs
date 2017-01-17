@@ -3,7 +3,7 @@ defmodule ShovikCom.Mixfile do
 
   def project do
     [app: :shovik_com,
-     version: "0.0.17",
+     version: "0.0.18",
      elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -44,6 +44,8 @@ defmodule ShovikCom.Mixfile do
      {:timex, "~> 3.1.7"},
      {:timex_ecto, "~> 3.1.1"},
      {:cachex, "~> 2.0"},
+     {:scrivener_ecto, "~> 1.0"},
+     {:scrivener_html, "~> 1.1"},
 
      # File attachments
      {:arc, "~> 0.6.0"},

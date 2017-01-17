@@ -1,5 +1,6 @@
 defmodule ShovikCom.BlogView do
   use ShovikCom.Web, :view
+  import Scrivener.HTML
 
   import Ecto
 

@@ -3,14 +3,12 @@ defmodule ShovikCom.BlogController do
 
   alias ShovikCom.Post
 
-  def index(conn, _params) do
-    now = Timex.now
+  def index(conn, params) do
+    page =
+      posts_query
+      |> Repo.paginate(params)
 
-    posts = Repo.all(from p in Post,
-                     where: p.publish_at <= ^now,
-                     order_by: [desc: p.publish_at],
-                     preload: [:author])
-    render(conn, "index.html", posts: posts, title: "Blog")
+    render conn, "index.html", page: page, title: "Blog"
   end
 
   def show(conn, %{"id" => id}) do
@@ -21,6 +19,15 @@ defmodule ShovikCom.BlogController do
       |> Repo.get!(id)
       |> Repo.preload(:author)
 
-    render(conn, "show.html", post: post, title: post.title)
+    render conn, "show.html", post: post, title: post.title
+  end
+
+  defp posts_query do
+    now = Timex.now
+
+    from p in Post,
+    where: p.publish_at <= ^now,
+    order_by: [desc: p.publish_at],
+    preload: [:author]
   end
 end
