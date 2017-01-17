@@ -8,15 +8,19 @@ defmodule ShovikCom.BlogView do
   alias ShovikCom.PostImage
 
   def render_post(post) do
-    cached_post =
-      ConCache.get(:shovik_cache, Post.cache_key(post))
+    cache_key = Post.cache_key(post)
 
-    if is_nil(cached_post) do
-      post_body = markdown(post.body)
-      ConCache.put(:shovik_cache, Post.cache_key(post), post_body)
-      post_body
-    else
-      cached_post
+    {status, cached_post} =
+      Cachex.get(:shovik_cache, cache_key)
+
+    case status do
+      :ok ->
+        cached_post
+
+      _ ->
+        post_body = markdown(post.body)
+        Cachex.set(:shovik_cache, cache_key, post_body)
+        post_body
     end
   end
 
