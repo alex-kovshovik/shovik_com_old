@@ -53,7 +53,7 @@ defmodule ShovikCom.Mixfile do
      {:sweet_xml, "~> 0.6.3"},
 
      # Deployment
-     {:distillery, "~> 1.0"},
+     {:distillery, "~> 1.1"},
      {:edeliver, "~> 1.4.0"}
    ]
   end
