@@ -3,8 +3,22 @@ defmodule ShovikCom.BlogView do
 
   import Ecto
 
+  alias ShovikCom.Post
   alias ShovikCom.Repo
   alias ShovikCom.PostImage
+
+  def render_post(post) do
+    cached_post =
+      ConCache.get(:shovik_cache, Post.cache_key(post))
+
+    if is_nil(cached_post) do
+      post_body = markdown(post.body)
+      ConCache.put(:shovik_cache, Post.cache_key(post), post_body)
+      post_body
+    else
+      cached_post
+    end
+  end
 
   def markdown(body) do
     body

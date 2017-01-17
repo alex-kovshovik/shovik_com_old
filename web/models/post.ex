@@ -29,4 +29,8 @@ defmodule ShovikCom.Post do
     |> cast(params, [:title, :url, :preview, :body, :publish_at, :author_id])
     |> validate_required([:title, :url, :preview, :body, :author_id])
   end
+
+  def cache_key(post) do
+    "post-#{post.id}-#{post.updated_at}"
+  end
 end
