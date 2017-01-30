@@ -36,7 +36,7 @@ defmodule ShovikCom.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:comeonin, "~> 2.3"},
+     {:comeonin, "~> 3.0"},
      {:credo, "~> 0.5.2", runtime: false},
      {:mix_test_watch, "~> 0.2.6"},
      {:ex_machina, "~> 1.0"},
@@ -57,7 +57,7 @@ defmodule ShovikCom.Mixfile do
 
      # Deployment
      {:distillery, "~> 1.1"},
-     {:edeliver, "~> 1.4.0"}
+     {:mix_docker, "0.3.1"}
    ]
   end
 

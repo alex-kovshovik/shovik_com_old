@@ -33,6 +33,8 @@ config :ex_aws,
 config :scrivener_html,
   routes_helper: ShovikCom.Router.Helpers
 
+config :mix_docker, image: "aspushkinus/shovik"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
