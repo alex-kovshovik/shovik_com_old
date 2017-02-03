@@ -1,6 +1,6 @@
-# Using alpine-elixir instead of alpine-erlang here
-# because Elixir 1.4 is not yet available in Alpine
-# community packages.
+# TODO
+# - Add NodeJS and install node, run brunch build and mix phoenix.digest!
+
 FROM bitwalker/alpine-elixir
 
 ENV HOME=/opt/app/ TERM=xterm
