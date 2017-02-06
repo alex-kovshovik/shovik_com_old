@@ -3,6 +3,4 @@
 
 <%= render_post(@post) %>
 
-<div id="disqus_thread"></div>
-
 <%= render "_scripts.html" %>
