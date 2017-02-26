@@ -27,7 +27,7 @@ defmodule ShovikCom.BlogView do
 
   def markdown(body) do
     body
-    |> Earmark.to_html(%Earmark.Options{breaks: true})
+    |> Earmark.as_html!(%Earmark.Options{breaks: true})
     |> raw
   end
 
