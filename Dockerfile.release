@@ -17,10 +17,10 @@
 # RUN COMMAND EXAMPLE
 #
 # Foreground:
-# docker run -it --rm -e PORT=8080 -p 8080:8080 -e HOST=shovik.com -e SECRET_KEY_BASE=$SHOVIK_SECRET_KEY_BASE -e DB_HOST=$SHOVIK_DB_HOST -e DB_NAME=$SHOVIK_DB_NAME -e DB_USER=$SHOVIK_DB_UDSER -e DB_PASSWORD=$SHOVIK_DB_PASSWORD aspushkinus/shovik:release foreground
+# docker run -it --rm -e PORT=8080 -p 8080:8080 -e HOST=shovik.com -e SECRET_KEY_BASE=$SHOVIK_SECRET_KEY_BASE -e DB_HOST=10.130.166.158 -e DB_NAME=shovik_blog_dev -e DB_USER=alexk aspushkinus/shovik:0.0.21.113-8652e48c3f foreground
 #
 # Daemon:
-# docker run -d --restart=unless-stopped -e PORT=8080 -p 8080:8080 -e HOST=shovik.com -e SECRET_KEY_BASE=$SHOVIK_SECRET_KEY_BASE -e DB_HOST=$SHOVIK_DB_HOST -e DB_NAME=$SHOVIK_DB_NAME -e DB_USER=$SHOVIK_DB_UDSER -e DB_PASSWORD=$SHOVIK_DB_PASSWORD aspushkinus/shovik:release foreground
+# docker run -it --rm -e PORT=8080 -p 8080:8080 -e HOST=shovik.com -e SECRET_KEY_BASE=$SHOVIK_SECRET_KEY -e DB_HOST=10.130.166.158 -e DB_NAME=shovik_blog_dev -e DB_USER=alexk aspushkinus/shovik:0.0.21.113-8652e48c3f start
 FROM bitwalker/alpine-elixir
 
 RUN apk update && \
