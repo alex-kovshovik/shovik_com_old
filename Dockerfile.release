@@ -24,7 +24,7 @@
 FROM bitwalker/alpine-elixir
 
 RUN apk update && \
-    apk --no-cache --update add libgcc libstdc++ && \
+    apk --no-cache --update add libgcc libstdc++ imagemagick && \
     rm -rf /var/cache/apk/*
 
 WORKDIR /opt/app
