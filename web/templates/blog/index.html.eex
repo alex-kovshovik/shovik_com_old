@@ -1,20 +1,3 @@
-<h1>All posts are lost :(</h1>
-
-<p>
-  I'm so sorry, all my blog posts are LOST! I did not make a backup this ONE time, put it off for later.
-</p>
-
-<h3>Story</h3>
-
-<ul>
-  <li>
-    This website runs on Rancher and it turns out, the PostgreSQL stack re-creates the database when restarted.
-  </li>
-  <li>
-    Linode had a hardware issue, so my host with the database had to be rebooted.
-  </li>
-</ul>
-
 <%= if @page.page_number > 1, do: pagination_links @page %>
 
 <%= for post <- @page.entries do %>
